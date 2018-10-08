@@ -44,9 +44,8 @@
 
 
 
-        <ul th:each="place:${places}">
 
-            <li><div class="row border p-3 rounded m-3">
+                <div class="row border p-3 rounded m-3" th:each="place:${places}">
                 <div class="col-md-5">
                     <img src="1.jpeg" class="img-fluid rounded"  alt="">
                 </div>
@@ -54,11 +53,10 @@
                     <h4 th:text="${place.getName()}"></h4>
                     <h3 th:text="${place.getSpecification()}"></h3>
                     <p th:text="${place.getAbout()}"></p>
-                    <a th:href="/place/information/id/${place.getPlaceId()}" class="btn btn-primary">More</a>
+                    <a th:href="@{/places/{id}(id = ${place.getPlaceId()})}" class="btn btn-primary">More</a>
                 </div>
-            </div></li>
+                </div>
 
-        </ul>
 
 
 
