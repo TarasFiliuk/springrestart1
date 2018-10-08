@@ -181,7 +181,7 @@ public class MainController {
                        Model model
     ){
         accountValidator.validate(user, bindingResult);
-      //  user.setToken(tokenUtils.generateToken());
+        user.setToken(tokenUtils.generateToken());
         if (bindingResult.hasErrors()) {
             StringBuilder errorMessage = new StringBuilder();
             List<ObjectError> allErrors = bindingResult.getAllErrors();
