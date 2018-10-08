@@ -3,11 +3,15 @@ package ua.com.owu.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import ua.com.owu.models.Manager;
 import ua.com.owu.models.Place;
 import ua.com.owu.service.accountService.AccountService;
 import ua.com.owu.service.placeService.PlaceService;
+
+import java.util.List;
 
 
 @Controller
@@ -37,6 +41,15 @@ public class PlaceController {
         Manager manager = (Manager) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         placeService.update(manager, place);
         return "redirect:/manager-account";
+    }
+
+    @GetMapping("/places")
+    public  String places(Model model){
+        List<Place> all = placeService.findAll();
+        model.addAttribute("places", all);
+        System.out.println(all);
+
+        return "places";
     }
 
 

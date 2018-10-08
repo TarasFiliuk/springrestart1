@@ -242,10 +242,10 @@ public class MainController {
     }
 
 
-    @GetMapping("/places")
-    public String places() {
-        return "places";
-    }
+//    @GetMapping("/places")
+//    public String places() {
+//        return "places";
+//    }
 
     @PostMapping("/admin/search")
     public String searchCustom(Model model) {

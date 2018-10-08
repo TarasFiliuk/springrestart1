@@ -59,7 +59,7 @@ public class DataConfig {
         factoryBean.setJpaVendorAdapter(vendorAdapter());
         factoryBean.setPackagesToScan("ua.com.owu.models");
         Properties properties = new Properties();
-        properties.put("hibernate.hbm2ddl.auto", "create");
+        properties.put("hibernate.hbm2ddl.auto", "update");
         factoryBean.setJpaProperties(properties);
         return factoryBean;
     }

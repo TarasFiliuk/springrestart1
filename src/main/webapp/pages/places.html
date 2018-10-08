@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -41,56 +41,27 @@
     <h1 class="text-center py-5">Places</h1>
     <div class="row">
     <main class="col-sm-9">
-        <div class="row border p-3 rounded m-3">
-            <div class="col-md-5">
-                <img src="1.jpeg" class="img-fluid rounded"  alt="">
+
+
+
+        <ul th:each="place:${places}">
+
+            <div class="row border p-3 rounded m-3">
+                <div class="col-md-5">
+                    <img src="1.jpeg" class="img-fluid rounded"  alt="">
+                </div>
+                <div class="col-md-7">
+                    <h4 th:text="${place.getName()}"></h4>
+                    <h3 th:text="${place.getSpecification()}"></h3>
+                    <p th:text="${place.getAbout()}"></p>
+                    <a th:href="/place/information/id/${place.getPlaceId()}" class="btn btn-primary">More</a>
+                </div>
             </div>
-            <div class="col-md-7">
-                <h4>Name</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci aliquam, aspernatur dolor dolore error est, illo itaque labore modi necessitatibus nemo nisi odio porro quasi recusandae sed ut vitae!</p>
-                <a href="" class="btn btn-primary">More</a>
-            </div>
-        </div>
-        <div class="row border p-3 rounded m-3">
-            <div class="col-md-5">
-                <img src="1.jpeg" class="img-fluid rounded"  alt="">
-            </div>
-            <div class="col-md-7">
-                <h4>Name</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci aliquam, aspernatur dolor dolore error est, illo itaque labore modi necessitatibus nemo nisi odio porro quasi recusandae sed ut vitae!</p>
-                <a href="" class="btn btn-primary">More</a>
-            </div>
-        </div>
-        <div class="row border p-3 rounded m-3">
-            <div class=" col-md-5">
-                <img src="1.jpeg" class="img-fluid rounded"  alt="">
-            </div>
-            <div class=" col-md-7">
-                <h4>Name</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci aliquam, aspernatur dolor dolore error est, illo itaque labore modi necessitatibus nemo nisi odio porro quasi recusandae sed ut vitae!</p>
-                <a href="" class="btn btn-primary">More</a>
-            </div>
-        </div>
-        <div class="row border p-3 rounded m-3">
-            <div class="col-md-5">
-                <img src="1.jpeg" class="img-fluid rounded"  alt="">
-            </div>
-            <div class="col-md-7">
-                <h4>Name</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci aliquam, aspernatur dolor dolore error est, illo itaque labore modi necessitatibus nemo nisi odio porro quasi recusandae sed ut vitae!</p>
-                <a href="" class="btn btn-primary">More</a>
-            </div>
-        </div>
-        <div class="row border p-3 rounded m-3">
-            <div class="col-md-5">
-                <img src="1.jpeg" class="img-fluid rounded"  alt="">
-            </div>
-            <div class="col-md-7">
-                <h4>Name</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci aliquam, aspernatur dolor dolore error est, illo itaque labore modi necessitatibus nemo nisi odio porro quasi recusandae sed ut vitae!</p>
-                <a href="" class="btn btn-primary">More</a>
-            </div>
-        </div>
+
+        </ul>
+
+
+
 
     </main>
     <aside class="col-sm-3   my-3 border rounded">
