@@ -239,53 +239,13 @@
                 </div>
                 <div class="tab-pane fade" id="update-place-pills" role="tabpanel"
                      aria-labelledby="update-place-pills-tab" th:if="${place}">
-                    <form method="post" action="" th:action="@{manager-account/place/update}">
-                        <div class="form-group row">
-                            <label for="place-update-name" class="col-sm-3 col-form-label">Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="name" class="form-control"
-                                       id="place-update-name" placeholder="Enter place`s name"
-                                       th:value="${place.getName()}">
+                    <div class="row">
+                        <main class="col-sm-12">
+                            <div id="card-columns" class="card-columns">
+                                <!--Тут мають бути картки-->
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="place-update-address" class="col-sm-3 col-form-label">Address</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="address" class="form-control"
-                                       id="place-update-address" placeholder="Enter place`s address"
-                                       th:value="${place.getAddress()}">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="place-update-city" class="col-sm-3 col-form-label">City</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="city" class="form-control"
-                                       id="place-update-city" placeholder="Enter place`s city"
-                                       th:value="${place.getCity()}">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="place-update-specification"
-                                   class="col-sm-3 col-form-label">Specification</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="specification" class="form-control"
-                                       id="place-update-specification"
-                                       placeholder="Enter place`s specification" th:value="${place.getSpecification()}">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="place-update-about" class="col-sm-3 col-form-label">About</label>
-                            <div class="col-sm-9">
-                            <textarea class="form-control" name="about" id="place-update-about" cols="30" rows="3"
-                                      placeholder="Write some words about your place!">[[${place.getAbout()}]]</textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-10">
-                                <button type="submit" class="btn btn-success px-4 py-2 my-3">Update</button>
-                            </div>
-                        </div>
-                    </form>
+                        </main>
+                    </div>
                     <a class="text-danger ml-auto" th:href="@{/manager-account/place/delete}">Delete place</a>
                 </div>
             </div>
@@ -304,5 +264,43 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+
+<script>
+    for (i = 0; i < 5; i++) {
+        $('#card-columns').append(
+            '<div class="card">'+
+            '<img class="card-img-top" src="1.jpeg" alt="Event picture">'+
+            '<div class="card-body">'+
+            '<h5 class="card-title">Ці картки для прикладу</h5>'+
+            '<p class="card-text text-primary">Вони не взяті з серверу</p>'+
+            '<p class="card-text text-muted">Просто для вигляду</p>'+
+            '<a href="#" class="btn btn-primary btn-sm" style="margin-right: 20px">Edit</a>'+
+            '<a href="#" class="btn btn-danger btn-sm">Delete</a>'+
+            '</div>'+
+            '</div>'
+        )};
+    $(document).ready(function(){
+        $.get(
+            "/manager-account/events",
+            function(data, status){
+                var my_data = JSON.parse(data);
+                for (i = 0; i < data.length; i++) {
+                    $('#card-columns').append(
+                        '<div class="card">'+
+                        '<img class="card-img-top" src="1.jpeg" alt="Event picture">'+
+                        '<div class="card-body">'+
+                        '<h5 class="card-title">my_data[i].name</h5>'+
+                        '<p class="card-text text-primary">my_data[i].place</p>'+
+                        '<p class="card-text text-muted">my_data[i].description</p>'+
+                        '<a href="#" class="btn btn-primary btn-sm" style="margin-right: 20px">Edit</a>'+
+                        '<a href="#" class="btn btn-danger btn-sm">Delete</a>'+
+                        '</div>'+
+                        '</div>'
+                    );
+                    console.log(status);
+                }}
+        )
+    });
+</script>
 </body>
 </html>
