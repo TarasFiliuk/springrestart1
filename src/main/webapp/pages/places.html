@@ -20,13 +20,13 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index2.html">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Places</a>
+                <a class="nav-link" href="places.html">Places</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Events</a>
+                <a class="nav-link" href="events.html">Events</a>
             </li>
         </ul>
 
@@ -40,47 +40,7 @@
 <div class="container p-5">
     <h1 class="text-center py-5">Places</h1>
     <div class="row">
-    <main class="col-sm-9">
-        <div class="row border p-3 rounded m-3">
-            <div class="col-md-5">
-                <img src="1.jpeg" class="img-fluid rounded"  alt="">
-            </div>
-            <div class="col-md-7">
-                <h4>Name</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci aliquam, aspernatur dolor dolore error est, illo itaque labore modi necessitatibus nemo nisi odio porro quasi recusandae sed ut vitae!</p>
-                <a href="" class="btn btn-primary">More</a>
-            </div>
-        </div>
-        <div class="row border p-3 rounded m-3">
-            <div class="col-md-5">
-                <img src="1.jpeg" class="img-fluid rounded"  alt="">
-            </div>
-            <div class="col-md-7">
-                <h4>Name</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci aliquam, aspernatur dolor dolore error est, illo itaque labore modi necessitatibus nemo nisi odio porro quasi recusandae sed ut vitae!</p>
-                <a href="" class="btn btn-primary">More</a>
-            </div>
-        </div>
-        <div class="row border p-3 rounded m-3">
-            <div class=" col-md-5">
-                <img src="1.jpeg" class="img-fluid rounded"  alt="">
-            </div>
-            <div class=" col-md-7">
-                <h4>Name</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci aliquam, aspernatur dolor dolore error est, illo itaque labore modi necessitatibus nemo nisi odio porro quasi recusandae sed ut vitae!</p>
-                <a href="" class="btn btn-primary">More</a>
-            </div>
-        </div>
-        <div class="row border p-3 rounded m-3">
-            <div class="col-md-5">
-                <img src="1.jpeg" class="img-fluid rounded"  alt="">
-            </div>
-            <div class="col-md-7">
-                <h4>Name</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci aliquam, aspernatur dolor dolore error est, illo itaque labore modi necessitatibus nemo nisi odio porro quasi recusandae sed ut vitae!</p>
-                <a href="" class="btn btn-primary">More</a>
-            </div>
-        </div>
+    <main id="show_places" class="col-sm-9">
         <div class="row border p-3 rounded m-3">
             <div class="col-md-5">
                 <img src="1.jpeg" class="img-fluid rounded"  alt="">
@@ -105,5 +65,32 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function(){
+        $.get(
+            "сюди урлу для places",
+            function(data, status){
+                var my_data = JSON.parse(data);
+                for (i = 0; i < data.length; i++) {
+                    $('#show_places').append(
+                        '<div class="row border p-3 rounded m-3">'+
+                        '<div class="col-md-5">'+
+                        '<img src="1.jpeg" class="img-fluid rounded"  alt=""></div>'+
+                        '<div class="col-md-7">'+
+                        '<h4>my_data[i].name</h4>'+
+                        '<p>my_data[i].description</p>'+
+                        '<a href="" class="btn btn-primary">More</a>'+
+                        '</div>'+
+                        '</div>'+
+                        '</main>'
+                    );
+                    console.log(status)
+                }
+            }
+        )
+    });
+</script>
+
 </body>
 </html>
