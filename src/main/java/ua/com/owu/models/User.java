@@ -10,6 +10,7 @@ import java.util.Objects;
 @Entity
 @DiscriminatorValue("user")
 public class User extends Account {
+
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private List<UserOrder> userOrders; // G S

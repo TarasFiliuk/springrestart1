@@ -40,9 +40,7 @@ public class WebConfig extends WebMvcConfigurerAdapter  {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry
-
-                .addResourceHandler("/pic/**")
+        registry.addResourceHandler("/pic/**")
                 .addResourceLocations("file:" + System.getProperty("user.home")
                         + File.separator
                         + "IdeaProjects"
@@ -53,6 +51,8 @@ public class WebConfig extends WebMvcConfigurerAdapter  {
                         + File.separator
 
                 );
+        registry.addResourceHandler("/js/**")
+                .addResourceLocations("/scripts/");
     }
 
     @Bean

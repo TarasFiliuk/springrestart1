@@ -1,5 +1,7 @@
 package ua.com.owu.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -12,9 +14,11 @@ public class PlaceTable {
     private int tableId;
     private int capacity;/*кількість людей*/
 
+    @JsonIgnore
     @OneToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "placeTable")
     private List<UserOrder> userOrders;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Place place;
 

@@ -1,5 +1,7 @@
 package ua.com.owu.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -8,6 +10,7 @@ import java.util.Objects;
 @DiscriminatorValue("manager")
 public class Manager  extends Account {
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
     private Place place;
     public Place getPlace() {
@@ -23,6 +26,7 @@ public class Manager  extends Account {
         super(role, password, username, email);
     }
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "managers")
     private
     List<UserOrder> userOrders;
